@@ -11,8 +11,11 @@
  */
 package org.eclipse.emf.ecp.makeithappen.model.task.impl;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -57,6 +60,14 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * @generated
 	 */
 	private EClass userGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	private EDataType dateOfBirthEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -392,6 +403,17 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 	 * @generated
 	 */
 	@Override
+	public EDataType getDateOfBirth() {
+		return dateOfBirthEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
 	public TaskFactory getTaskFactory() {
 		return (TaskFactory) getEFactoryInstance();
 	}
@@ -444,6 +466,9 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 		userGroupEClass = createEClass(USER_GROUP);
 		createEAttribute(userGroupEClass, USER_GROUP__NAME);
 		createEReference(userGroupEClass, USER_GROUP__USERS);
+
+		// Create data types
+		dateOfBirthEDataType = createEDataType(DATE_OF_BIRTH);
 	}
 
 	/**
@@ -525,7 +550,7 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUser_Nationality(), ecorePackage.getEString(), "nationality", null, 0, 1, User.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUser_DateOfBirth(), ecorePackage.getEString(), "dateOfBirth", null, 0, 1, User.class, //$NON-NLS-1$
+		initEAttribute(getUser_DateOfBirth(), getDateOfBirth(), "dateOfBirth", null, 0, 1, User.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUser_Email(), ecorePackage.getEString(), "email", null, 1, 1, User.class, !IS_TRANSIENT, //$NON-NLS-1$
 			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -541,8 +566,32 @@ public class TaskPackageImpl extends EPackageImpl implements TaskPackage {
 			!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
 
+		// Initialize data types
+		initEDataType(dateOfBirthEDataType, XMLGregorianCalendar.class, "DateOfBirth", IS_SERIALIZABLE, //$NON-NLS-1$
+			!IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		final String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData"; //$NON-NLS-1$
+		addAnnotation(dateOfBirthEDataType,
+			source,
+			new String[] {
+				"baseType", "http://www.eclipse.org/emf/2003/XMLType#date" //$NON-NLS-1$ //$NON-NLS-2$
+			});
 	}
 
 } // TaskPackageImpl

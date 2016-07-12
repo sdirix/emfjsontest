@@ -13,10 +13,13 @@ package org.eclipse.emf.ecp.makeithappen.model.task.util;
 
 import java.util.Map;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
 import org.eclipse.emf.ecp.makeithappen.model.task.Task;
 import org.eclipse.emf.ecp.makeithappen.model.task.TaskPackage;
 import org.eclipse.emf.ecp.makeithappen.model.task.User;
@@ -81,6 +84,15 @@ public class TaskValidator extends EObjectValidator {
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
+	 * The cached base package validator.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	protected XMLTypeValidator xmlTypeValidator;
+
+	/**
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,6 +101,7 @@ public class TaskValidator extends EObjectValidator {
 	 */
 	public TaskValidator() {
 		super();
+		xmlTypeValidator = XMLTypeValidator.INSTANCE;
 	}
 
 	/**
@@ -120,6 +133,8 @@ public class TaskValidator extends EObjectValidator {
 			return validateUser((User) value, diagnostics, context);
 		case TaskPackage.USER_GROUP:
 			return validateUserGroup((UserGroup) value, diagnostics, context);
+		case TaskPackage.DATE_OF_BIRTH:
+			return validateDateOfBirth((XMLGregorianCalendar) value, diagnostics, context);
 		default:
 			return true;
 		}
@@ -192,6 +207,17 @@ public class TaskValidator extends EObjectValidator {
 	 */
 	public boolean validateUserGroup(UserGroup userGroup, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(userGroup, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public boolean validateDateOfBirth(XMLGregorianCalendar dateOfBirth, DiagnosticChain diagnostics,
+		Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

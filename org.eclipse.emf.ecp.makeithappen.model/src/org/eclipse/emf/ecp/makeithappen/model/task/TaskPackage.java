@@ -13,6 +13,7 @@ package org.eclipse.emf.ecp.makeithappen.model.task;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -368,6 +369,17 @@ public interface TaskPackage extends EPackage {
 	int USER_GROUP_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '<em>Date Of Birth</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @see javax.xml.datatype.XMLGregorianCalendar
+	 * @see org.eclipse.emf.ecp.makeithappen.model.task.impl.TaskPackageImpl#getDateOfBirth()
+	 * @generated
+	 */
+	int DATE_OF_BIRTH = 3;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.ecp.makeithappen.model.task.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -663,6 +675,19 @@ public interface TaskPackage extends EPackage {
 	EReference getUserGroup_Users();
 
 	/**
+	 * Returns the meta object for data type '{@link javax.xml.datatype.XMLGregorianCalendar <em>Date Of Birth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @return the meta object for data type '<em>Date Of Birth</em>'.
+	 * @see javax.xml.datatype.XMLGregorianCalendar
+	 * @model instanceClass="javax.xml.datatype.XMLGregorianCalendar"
+	 *        extendedMetaData="baseType='http://www.eclipse.org/emf/2003/XMLType#date'"
+	 * @generated
+	 */
+	EDataType getDateOfBirth();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -902,6 +927,17 @@ public interface TaskPackage extends EPackage {
 		 * @generated
 		 */
 		EReference USER_GROUP__USERS = eINSTANCE.getUserGroup_Users();
+
+		/**
+		 * The meta object literal for the '<em>Date Of Birth</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 *
+		 * @see javax.xml.datatype.XMLGregorianCalendar
+		 * @see org.eclipse.emf.ecp.makeithappen.model.task.impl.TaskPackageImpl#getDateOfBirth()
+		 * @generated
+		 */
+		EDataType DATE_OF_BIRTH = eINSTANCE.getDateOfBirth();
 
 	}
 

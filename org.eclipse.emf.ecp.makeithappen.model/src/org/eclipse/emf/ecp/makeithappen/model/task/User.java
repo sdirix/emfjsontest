@@ -13,6 +13,8 @@ package org.eclipse.emf.ecp.makeithappen.model.task;
 
 import java.util.Date;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -285,12 +287,12 @@ public interface User extends EObject {
 	 * <!-- end-user-doc -->
 	 *
 	 * @return the value of the '<em>Date Of Birth</em>' attribute.
-	 * @see #setDateOfBirth(String)
+	 * @see #setDateOfBirth(XMLGregorianCalendar)
 	 * @see org.eclipse.emf.ecp.makeithappen.model.task.TaskPackage#getUser_DateOfBirth()
-	 * @model
+	 * @model dataType="org.eclipse.emf.ecp.makeithappen.model.task.DateOfBirth"
 	 * @generated
 	 */
-	String getDateOfBirth();
+	XMLGregorianCalendar getDateOfBirth();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.ecp.makeithappen.model.task.User#getDateOfBirth <em>Date Of
@@ -302,7 +304,7 @@ public interface User extends EObject {
 	 * @see #getDateOfBirth()
 	 * @generated
 	 */
-	void setDateOfBirth(String value);
+	void setDateOfBirth(XMLGregorianCalendar value);
 
 	/**
 	 * Returns the value of the '<em><b>Email</b></em>' attribute.

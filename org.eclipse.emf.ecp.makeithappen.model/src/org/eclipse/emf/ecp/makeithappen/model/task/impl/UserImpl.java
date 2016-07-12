@@ -14,6 +14,8 @@ package org.eclipse.emf.ecp.makeithappen.model.task.impl;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -237,7 +239,7 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DATE_OF_BIRTH_EDEFAULT = null;
+	protected static final XMLGregorianCalendar DATE_OF_BIRTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getDateOfBirth() <em>Date Of Birth</em>}' attribute.
@@ -248,7 +250,7 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * @generated
 	 * @ordered
 	 */
-	protected String dateOfBirth = DATE_OF_BIRTH_EDEFAULT;
+	protected XMLGregorianCalendar dateOfBirth = DATE_OF_BIRTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
@@ -522,7 +524,7 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * @generated
 	 */
 	@Override
-	public String getDateOfBirth() {
+	public XMLGregorianCalendar getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -533,8 +535,8 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * @generated
 	 */
 	@Override
-	public void setDateOfBirth(String newDateOfBirth) {
-		final String oldDateOfBirth = dateOfBirth;
+	public void setDateOfBirth(XMLGregorianCalendar newDateOfBirth) {
+		final XMLGregorianCalendar oldDateOfBirth = dateOfBirth;
 		dateOfBirth = newDateOfBirth;
 		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, TaskPackage.USER__DATE_OF_BIRTH, oldDateOfBirth,
@@ -684,7 +686,7 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 			setNationality((String) newValue);
 			return;
 		case TaskPackage.USER__DATE_OF_BIRTH:
-			setDateOfBirth((String) newValue);
+			setDateOfBirth((XMLGregorianCalendar) newValue);
 			return;
 		case TaskPackage.USER__EMAIL:
 			setEmail((String) newValue);

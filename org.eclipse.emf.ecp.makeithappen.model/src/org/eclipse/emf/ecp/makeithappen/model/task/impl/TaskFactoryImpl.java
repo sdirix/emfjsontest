@@ -11,11 +11,16 @@
  */
 package org.eclipse.emf.ecp.makeithappen.model.task.impl;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecp.makeithappen.model.task.Task;
 import org.eclipse.emf.ecp.makeithappen.model.task.TaskFactory;
 import org.eclipse.emf.ecp.makeithappen.model.task.TaskPackage;
@@ -88,6 +93,38 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	 * @generated
 	 */
 	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case TaskPackage.DATE_OF_BIRTH:
+			return createDateOfBirthFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case TaskPackage.DATE_OF_BIRTH:
+			return convertDateOfBirthToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
 	public Task createTask() {
 		final TaskImpl task = new TaskImpl();
 		return task;
@@ -115,6 +152,27 @@ public class TaskFactoryImpl extends EFactoryImpl implements TaskFactory {
 	public UserGroup createUserGroup() {
 		final UserGroupImpl userGroup = new UserGroupImpl();
 		return userGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public XMLGregorianCalendar createDateOfBirthFromString(EDataType eDataType, String initialValue) {
+		return (XMLGregorianCalendar) XMLTypeFactory.eINSTANCE.createFromString(XMLTypePackage.Literals.DATE,
+			initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	public String convertDateOfBirthToString(EDataType eDataType, Object instanceValue) {
+		return XMLTypeFactory.eINSTANCE.convertToString(XMLTypePackage.Literals.DATE, instanceValue);
 	}
 
 	/**
