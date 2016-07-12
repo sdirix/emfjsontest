@@ -139,13 +139,43 @@ public class EMFJsonTest {
 	/**
 	 * Tests the EMF -> JSON -> EMF round trip.
 	 *
+	 * Saves the Task Ecore as JSON file. Then parses the JSON file and saves it as a new Task Ecore.
+	 *
+	 * @throws IOException if something went wrong.
+	 */
+	@Ignore
+	@Test
+	public void convertToJsonToEcore() throws IOException {
+		// Create Task Json
+		final String taskJsonURI = "testoutput/taskJSON.json"; //$NON-NLS-1$
+
+		final Resource resource = jsonResourceSet.createResource(URI.createURI(taskJsonURI));
+		resource.getContents().add(EcoreUtil.copy(TaskPackage.eINSTANCE));
+		resource.save(saveOptions);
+		resource.unload();
+
+		// Reload Task Json
+		resource.load(null);
+
+		// Create new Ecore Resource
+		final Resource newEcoreResource = jsonResourceSet.createResource(URI.createURI("testoutput/taskEcore.ecore")); //$NON-NLS-1$
+		newEcoreResource.getContents().add(resource.getContents().get(0));
+		newEcoreResource.save(null);
+
+		// TODO:
+		// Compare with original ecore file.
+	}
+
+	/**
+	 * Tests the EMF -> JSON (+ modifications) -> EMF usage round trip.
+	 *
 	 * First the Task Ecore JSON resource is created. After that a new attribute is added. The modified JSON resource is
 	 * then loaded and used via EMF reflection.
 	 *
 	 * @throws IOException if something went wrong.
 	 */
 	@Test
-	public void createModifyAndReadTaskJson() throws IOException {
+	public void convertToAndModifyAndUseJSON() throws IOException {
 		// Create Task Json
 		final String taskJsonURI = "testoutput/taskJSON.json"; //$NON-NLS-1$
 		final String modifiedTaskJsonURI = "testoutput/taskJSONModified.json"; //$NON-NLS-1$
